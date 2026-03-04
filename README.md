@@ -5,6 +5,8 @@
 MedProof は
 **医療文章の校閲を少しラクにするデスクトップツール**です。
 
+![MedProof Screenshot](docs/screenshot.png)
+
 医療記事を書いていると
 
 ・表記揺れ
