@@ -1,0 +1,279 @@
+:root{
+  /* base */
+  --bg: #070b12;
+  --panel: rgba(18, 26, 40, 0.78);
+  --panelSolid: #111a2a;
+  --panel2: rgba(12, 18, 32, 0.72);
+
+  --text: #e9eef7;
+  --muted: rgba(233, 238, 247, 0.65);
+
+  --border: rgba(140, 180, 255, 0.14);
+  --border2: rgba(140, 180, 255, 0.22);
+
+  /* accent */
+  --accent: #56d6ff;     /* aqua */
+  --accent2: #7c5cff;    /* violet */
+  --warn: #ffb020;
+  --danger: #ff6b8b;
+  --ok: #3fe6b1;
+
+  /* effects */
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow2: 0 16px 48px rgba(0,0,0,0.45);
+  --ring: 0 0 0 3px rgba(86,214,255,0.18);
+
+  --radius: 16px;
+  --radius2: 20px;
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(86,214,255,0.16), transparent 60%),
+    radial-gradient(900px 600px at 95% 0%, rgba(124,92,255,0.16), transparent 55%),
+    radial-gradient(900px 700px at 60% 115%, rgba(63,230,177,0.10), transparent 55%),
+    linear-gradient(180deg, #060a10, #070b12 45%, #060a10);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    "Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+}
+
+#app{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ---------- header ---------- */
+.header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:14px 16px;
+  border-bottom: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(17, 26, 42, 0.85), rgba(10, 16, 28, 0.65));
+  backdrop-filter: blur(10px);
+}
+
+.brand{
+  font-weight:800;
+  letter-spacing: .6px;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ---------- controls ---------- */
+.btn{
+  padding: 9px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.035);
+  color: var(--text);
+  cursor:pointer;
+  transition: transform .12s ease, border-color .12s ease, background .12s ease, box-shadow .12s ease;
+  user-select:none;
+}
+
+.btn:hover{
+  border-color: rgba(86,214,255,0.35);
+  background: rgba(255,255,255,0.055);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0px);
+}
+
+.btn.primary{
+  border: 1px solid rgba(86,214,255,0.28);
+  background:
+    linear-gradient(90deg, rgba(86,214,255,0.25), rgba(124,92,255,0.20));
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
+.btn.primary:hover{
+  border-color: rgba(86,214,255,0.55);
+}
+
+.select{
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.035);
+  color: var(--text);
+  outline:none;
+}
+
+.select:focus{
+  box-shadow: var(--ring);
+  border-color: rgba(86,214,255,0.45);
+}
+
+/* ---------- layout ---------- */
+.main{
+  flex:1;
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  min-height:0;
+}
+
+.panes{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 14px;
+  min-height:0;
+}
+
+/* ---------- panes ---------- */
+.pane{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.paneHeader{
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+textarea{
+  flex:1;
+  width:100%;
+  resize:none;
+  border:none;
+  outline:none;
+  padding: 14px;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.7;
+  min-height:0;
+}
+
+textarea::selection{
+  background: rgba(86,214,255,0.25);
+}
+
+/* ---------- sidebar ---------- */
+.sidebar{
+  border-left: 1px solid var(--border);
+  background: rgba(10, 16, 28, 0.35);
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  backdrop-filter: blur(10px);
+}
+
+.sidebarHeader{
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.issues{
+  overflow:auto;
+  padding: 10px;
+  min-height:0;
+}
+
+/* ---------- issue cards ---------- */
+.issue{
+  padding: 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  cursor:pointer;
+  background: rgba(255,255,255,0.03);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease, box-shadow .12s ease;
+}
+
+.issue:hover{
+  border-color: rgba(86,214,255,0.40);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  transform: translateY(-1px);
+}
+
+.issue:active{
+  transform: translateY(0px);
+}
+
+.issueTop{
+  display:flex;
+  justify-content: space-between;
+  gap:10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.issueMsg{
+  margin-top: 7px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ---------- tags ---------- */
+.tag{
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(255,255,255,0.02);
+}
+
+.tag.s1{ border-color: rgba(255,107,139,0.55); color: var(--danger); }
+.tag.s2{ border-color: rgba(255,176,32,0.55); color: var(--warn); }
+.tag.s3{ border-color: rgba(63,230,177,0.45); color: var(--ok); }
+
+.small{ font-size:12px; color: var(--muted); }
+
+/* scrollbar（Windowsで見栄えUP） */
+.issues::-webkit-scrollbar,
+textarea::-webkit-scrollbar{
+  width: 10px;
+}
+.issues::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.0);
+}
+.issues::-webkit-scrollbar-thumb:hover,
+textarea::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,0.16);
+}

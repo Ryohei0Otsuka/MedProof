@@ -1,0 +1,32 @@
+{
+  "name": "@medproof/desktop",
+  "private": true,
+  "version": "0.1.0",
+  "main": "dist/main/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "npm run build:watch:core && npm run dev:electron",
+    "dev:electron": "concurrently -k \"npm:watch:main\" \"npm:watch:renderer\" \"wait-on dist/renderer/index.html && electron .\"",
+    "build": "npm run build:main && npm run build:renderer",
+    "dist": "electron-builder -c ../../electron-builder.yml",
+
+    "build:watch:core": "npm --prefix ../../packages/core run build:watch",
+
+    "build:main": "tsc -p tsconfig.json --pretty",
+    "watch:main": "tsc -p tsconfig.json -w --pretty",
+
+    "build:renderer": "tsc -p src/renderer/tsconfig.json --pretty && node src/renderer/copy-static.cjs",
+    "watch:renderer": "tsc -p src/renderer/tsconfig.json -w --pretty && node src/renderer/copy-static.cjs --watch"
+  },
+  "dependencies": {
+    "@medproof/core": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.0.0",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.6.3",
+    "wait-on": "^8.0.0"
+  }
+}

@@ -1,0 +1,39 @@
+appId: com.medproof.app
+productName: MedProof
+
+directories:
+  output: release
+
+asar: true
+
+files:
+  - "dist/**"
+  - "package.json"
+
+  - from: "../../packages/core/dist"
+    to: "core"
+  - from: "../../packages/core/package.json"
+    to: "core/package.json"
+
+# dictionaries は「存在しない」って出てるので、一旦無効化してEXEを先に出す
+# extraResources:
+#   - from: "../../packages/dictionaries"
+#     to: "dictionaries"
+
+extraMetadata:
+  main: "dist/main/main.js"
+
+win:
+  target:
+    - nsis
+mac:
+  target:
+    - dmg
+linux:
+  target:
+    - AppImage
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
